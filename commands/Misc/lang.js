@@ -1,4 +1,4 @@
-module.exports.run = (message) => {
+module.exports.run = (client) => {
 
   const commands = client.channels.cache.find(channel => channel.name === 'commands');
 

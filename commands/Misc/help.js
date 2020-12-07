@@ -1,13 +1,6 @@
-module.exports.run = (message) => {
-  
-  const commands = client.channels.cache.find(channel => channel.name === 'commands');//l'id du salon salon nomé join-start es stocké dans la variable 
+module.exports.run = (client) => {
 
-  const help = new Discord.MessageEmbed()
-      .setColor(16556032)
-      .setAuthor("D'où viens cette image", null, null)
-      .title("Liste des commandes")
-      .description(```Voici les commandes disponibles sur le serveur.```)
-      commands.send(help);
+  const commands = client.channels.cache.find(channel => channel.name === 'commands');//l'id du salon salon nomé join-start es stocké dans la variable 
 
   const rules = {
     "title": "Liste des commandes",
