@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/nefers12/leanbot/badge)](https://www.codefactor.io/repository/github/nefers12/leanbot)
+
 # LeanBot, Nefers' Discord bot
 
 This bot is created in in order to make a discord version of the [Popsauce Game](https://jklm.fun/), I will update my bot when i have time for it.
