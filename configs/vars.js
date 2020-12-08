@@ -1,5 +1,3 @@
-const { listenerCount } = require("process");
-
 module.exports ={
   Players : ["",""], // liste des joueurs.
   Admin : [], //joueur qui a lancé la partie.
