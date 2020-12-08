@@ -1,5 +1,5 @@
 module.exports.run = (client,args,message) => { //définir les ressources requises.
-  /*const { RCON } = require('minecraft-server-util');
+  const { RCON } = require('minecraft-server-util');
   const {PASS,IPRCON} = require ('../../configs/config');
   const cmdmc = client.channels.cache.find(channel => channel.name === 'mc-log'); //recherche un salon discord s'appellant 'mc-log'.
 
@@ -28,7 +28,7 @@ module.exports.run = (client,args,message) => { //définir les ressources requis
     return rcon.close(); //se déconnecte du RCON.
   };
 
-  rconExample();//execute la fonction ci-dessus.*/
+  rconExample();//execute la fonction ci-dessus.
 };
 
 module.exports.help = {

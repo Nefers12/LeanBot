@@ -9,11 +9,11 @@ module.exports.run = (client, message) => {
 
   if(launch === true) {
     joinstart.send("Une partie à déjà en cours !"); //envoie une erreur si la partie est déjà en cours.
-  };
+  }
 
   if(launch === false && p === false) {//si la partie n'est pas en cours.
   joinstart.send('Vous devez être dans la partie afin de pouvoir la lancer.')
-};
+}
 
   if(launch === false && p === true) {//si la partie n'est pas en cours.
     console.log(mod.Players);//affiche dans la consolle tout les joueurs.
@@ -70,7 +70,7 @@ module.exports.run = (client, message) => {
     }else {//si il y a moins de 3 joueurs.
       joinstart.send("Pas assez de joueurs pour démarrer la partie");//affiche un message d'erreur.
     }
-  };
+  }
 };
 
 module.exports.help = {

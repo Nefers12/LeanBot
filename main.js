@@ -16,7 +16,7 @@ const loadCommands = (dir = "./commands/") => { //récupération des commandes s
       const getFileName = require(`${dir}/${dirs}/${file}`);
       client.commands.set(getFileName.help.name, getFileName);
       console.log(`Commande chargée: ${getFileName.help.name}`);
-    };
+    }
   });
 };
 
@@ -29,7 +29,7 @@ const loadEvents = (dir = "./events/") => { //récupération des events se situa
       const evtName = event.split(".")[0];
       client.on(evtName, evt.bind(null, client));
       console.log(`Evenement chargée: ${evtName}`);
-    };
+    }
   });
 };
 

@@ -6,7 +6,7 @@ module.exports.run = (client, message) => {
 
   if(launch === true) {
     joinstart.send("Une partie à déjà démarré sans toi, dommage !"); //message envoyé si une partie est déjà en cours.
-  };
+  }
 
   if(launch === false && p === false) {
     joinstart.send(message.author.toString() + " a rejoint la partie !"); //message envoyé quand un joueurs rejoint la partie.
@@ -17,7 +17,7 @@ module.exports.run = (client, message) => {
     if(launch === false && p === true){ //si un joueur est déjà dans la liste des joueurs et que la partie n'est pas démarrée.
       joinstart.send("<@"+ message.author.id +"> " + "est déjà présent dans la partie");//on renvoie un message d'erreur.
     }
-  };
+  }
 };
 
 module.exports.help = {

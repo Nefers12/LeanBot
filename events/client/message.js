@@ -120,7 +120,7 @@ function qembed(){
 
   if(command.help.delete){ //ajout d'un paramètre definisant si la commande de l'utilisateur doit ou non être supprimée du chat.
      message.delete();
-  };
+  }
 
   command.run(client, message, args);//execute le code de la commande appelée .
 
