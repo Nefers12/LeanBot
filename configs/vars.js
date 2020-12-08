@@ -4,4 +4,5 @@ module.exports ={
   Score : [0,0,0,0,0,0,0,0,0,0],//scores des joueurs.
   points: 10,
   rep: 0,
+  q: 0,
 }
