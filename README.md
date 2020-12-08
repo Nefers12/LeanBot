@@ -66,3 +66,5 @@ To setup the bot on your server you must have channels called :
 - status
 - join-start
 - popsauce
+
+If you want to activate minecraft commands, drag minecraft file into the command file.
