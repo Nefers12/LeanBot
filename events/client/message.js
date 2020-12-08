@@ -7,40 +7,97 @@ module.exports = (client, message) => {
   var list = require('../../configs/lists');
   var p = mod.Players.includes(message.author.id);//la variable p vaut l'index où sont stockés les joueurs.
   const popsauce = client.channels.cache.find(channel => channel.name === 'popsauce');//l'id du salon salon nomé join-start es stocké dans la variable popsauce.
-  str2 = String([list.repalias2[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str0 = String([list.rep[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
   str1 = String([list.repalias[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
-  str = String([list.rep[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str2 = String([list.repalias2[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str3 = String([list.cqrep[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str4 = String([list.cqrepalias[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str5 = String([list.qrep[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
+  str6 = String([list.qrepalias[image]]).replace(/\s+/g, '');//on supprime les espaces entre les mots;
   msg = message.content.replace(/\s+/g, '');//on supprime les espaces entre les mots;
 
-  if(msg.toLowerCase() === str | msg.toLowerCase() === str1 | msg.toLowerCase() === str2 && launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true){//si le message contient la bonne réponse que la partie est en cours que l'auteur n'est pas un bot, que la personne est un joueur et que que le message ne commence pas par le préfix.
-    popsauce.send("Bonne réponse");
-    mod.Score[mod.Players.indexOf(message.author.id)] = mod.Score[mod.Players.indexOf(message.author.id)] + 1 //on ajoute 1 au score
-    popsauce.send("Votre score est de " + mod.Score[mod.Players.indexOf(message.author.id)])
+  function goodAnswer(){
+  popsauce.send("Bonne réponse");
+  mod.Score[mod.Players.indexOf(message.author.id)] = mod.Score[mod.Players.indexOf(message.author.id)] + 1 //on ajoute 1 au score
+  popsauce.send("Votre score est de " + mod.Score[mod.Players.indexOf(message.author.id)])
 
-    if(mod.Score[mod.Players.indexOf(message.author.id)] >= mod.points){//si un joueur à un score de 10 ou plus.
-      popsauce.send("<@"+ message.author.id + ">"+" à gagné la partie.");//on annon sa victoire.
-      mod.Players = [];//on reset la partie.
-      mod.Admin = [];
-      mod.Score = [0,0,0,0,0,0,0,0,0,0];
-      mod.points = 10;
-      launch = false;
-      return;//on sort de la boucle pour ne pas effectuer le reste.
-    }
+  if(mod.Score[mod.Players.indexOf(message.author.id)] >= mod.points){//si un joueur à un score de 10 ou plus.
+    popsauce.send("<@"+ message.author.id + ">"+" à gagné la partie.");//on annon sa victoire.
+    mod.Players = [];//on reset la partie.
+    mod.Admin = [];
+    mod.Score = [0,0,0,0,0,0,0,0,0,0];
+    mod.points = 10;
+    launch = false;
+    return;//on sort de la boucle pour ne pas effectuer le reste.
+  }
 
-      image = Math.floor(Math.random() * Math.floor(list.imgname.length));//on choisi une image au hasard.
-      console.log([list.rep[image]]);
-      //on affiche l'image choisie dans un embed.
-      const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
-      const pic = new Discord.MessageEmbed()
-      .setColor(3366179)
-      .attachFiles(img)
-      .setImage('attachment://'+list.imgname[image]+'.png')
-      .setAuthor("D'où viens cette image", null, null)
-      popsauce.send(pic);
+  rdm = Math.floor(Math.random() * Math.floor(3));
+
+  switch(rdm){
+      case 0:
+          image = Math.floor(Math.random() * Math.floor(list.cquotes.length));//on choisi une image au hasard.
+          console.log([list.cqrep[image]]);
+
+          const cquote = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .setAuthor("Qui a dit ça ?", null, null)
+          .setDescription("```" + [list.cquotes[image]] + "```")
+          popsauce.send(cquote);
+          mod.rep = list.cqrep
+          break;
+        case 1:
+          image = Math.floor(Math.random() * Math.floor(list.imgname.length));//on choisi une image au hasard.
+          console.log([list.rep[image]]);
+          //on affiche l'image choisie dans un embed.
+          const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
+          const pic = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .attachFiles(img)
+          .setImage('attachment://'+list.imgname[image]+'.png')
+          .setAuthor("D'où viens cette image", null, null)
+          popsauce.send(pic);
+          mod.rep = list.rep
+          break;
+
+        case 2:
+          image = Math.floor(Math.random() * Math.floor(list.quotes.length));//on choisi une image au hasard.
+          console.log([list.qrep[image]]);
+
+          const quote = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .setAuthor("D'où viens cette citation", null, null)
+          .setDescription("```" + [list.quotes[image]] + "```")
+          popsauce.send(quote);
+          mod.rep = list.qrep
+          break;
+
+  }
+}
+
+  if(msg.toLowerCase() === str0 | msg.toLowerCase() === str1 | msg.toLowerCase() === str2 && launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 1){//si le message contient la bonne réponse que la partie est en cours que l'auteur n'est pas un bot, que la personne est un joueur et que que le message ne commence pas par le préfix.
+    goodAnswer();
   }else{//si le message envoyé par un joueur ne contient pas la bonne réponse.
-    if(msg.toLowerCase() !== str && launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true){
+    if(launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 1){
       popsauce.send("Mauvaise réponse");
       console.log([list.rep[image]]);
+    }
+  }
+
+  if(msg.toLowerCase() === str3 | msg.toLowerCase() === str4 && launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 0){//si le message contient la bonne réponse que la partie est en cours que l'auteur n'est pas un bot, que la personne est un joueur et que que le message ne commence pas par le préfix.
+    goodAnswer();
+  }else{//si le message envoyé par un joueur ne contient pas la bonne réponse.
+    if(launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 0){
+      popsauce.send("Mauvaise réponse");
+      console.log([list.cqrep[image]]);
+    }
+  }
+
+  if(msg.toLowerCase() === str5 | msg.toLowerCase() === str6 && launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 2){//si le message contient la bonne réponse que la partie est en cours que l'auteur n'est pas un bot, que la personne est un joueur et que que le message ne commence pas par le préfix.
+    goodAnswer();
+  }else{//si le message envoyé par un joueur ne contient pas la bonne réponse.
+    if(launch === true && !message.author.bot && !message.content.startsWith(PREFIX) && p === true && rdm === 2){
+      popsauce.send("Mauvaise réponse");
+      console.log([list.qrep[image]]);
     }
   }
   

@@ -9,7 +9,7 @@ module.exports.run = (client, message) => {
 
   if(launch === true && !message.author.bot && p === true && a === true){//si la partie est lancée que l'auteur n'est pas un bot, qu'il est un joueur et qu'il est le joueur qui a lancé la partie.
   popsauce.send("La réponse était " +[list.rep[image]]);
-    mod.Players = [];//on reset les joueurs.
+    mod.Players = ["",""];//on reset les joueurs.
     mod.Admin = [];//on reset le joueur qui a lancé la partie.
     mod.Score = [0,0,0,0,0,0,0,0,0,0];//on reset le score.
     mod.points = 10;

@@ -25,16 +25,48 @@ module.exports.run = (client, message) => {
       joinstart.send('La partie va démarrer avec ' + mod.Players.length + ' joueurs.\nVeuillez vous rendre dans ' +"<#" + popsauce + ">");//envoie un message annoncant le début de la partie avec le nombre de joueurs y participant.
       mod.Admin.push(message.author.id);//on retiens quel joueur a lancé la partie.
       launch = true;//on stock l'état de la partie (lancée) dans une variable.
-      image = Math.floor(Math.random() * Math.floor(list.imgname.length));//on choisi une image au hasard.
-      console.log([list.rep[image]]);
-      //on affiche l'image choisie dans un embed.
-      const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
-      const pic = new Discord.MessageEmbed()
-      .setColor(3366179)
-      .attachFiles(img)
-      .setImage('attachment://'+list.imgname[image]+'.png')
-      .setAuthor("D'où viens cette image", null, null)
-      popsauce.send(pic);
+
+      rdm = Math.floor(Math.random() * Math.floor(3));
+
+      switch(rdm){
+        case 0:
+          image = Math.floor(Math.random() * Math.floor(list.cquotes.length));//on choisi une image au hasard.
+          console.log([list.cqrep[image]]);
+
+          const cquote = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .setAuthor("Qui a dit ça ?", null, null)
+          .setDescription("```" + [list.cquotes[image]] + "```")
+          popsauce.send(cquote);
+          mod.rep = list.cqrep
+          break;
+        case 1:
+          image = Math.floor(Math.random() * Math.floor(list.imgname.length));//on choisi une image au hasard.
+          console.log([list.rep[image]]);
+          //on affiche l'image choisie dans un embed.
+          const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
+          const pic = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .attachFiles(img)
+          .setImage('attachment://'+list.imgname[image]+'.png')
+          .setAuthor("D'où viens cette image", null, null)
+          popsauce.send(pic);
+          mod.rep = list.rep
+          break;
+
+        case 2:
+          image = Math.floor(Math.random() * Math.floor(list.quotes.length));//on choisi une image au hasard.
+          console.log([list.qrep[image]]);
+
+          const quote = new Discord.MessageEmbed()
+          .setColor(3366179)
+          .setAuthor("D'où viens cette citation", null, null)
+          .setDescription("```" + [list.quotes[image]] + "```")
+          popsauce.send(quote);
+          mod.rep = list.qrep
+          break;
+
+              }
     }else {//si il y a moins de 3 joueurs.
       joinstart.send("Pas assez de joueurs pour démarrer la partie");//affiche un message d'erreur.
     }
