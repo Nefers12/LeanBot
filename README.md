@@ -2,7 +2,7 @@
 
 # LeanBot, Nefers' Discord bot
 
-This bot is created in in order to make a discord version of the [Popsauce Game](https://jklm.fun/), I will update my bot when i have time for it.
+This bot is created in order to make a discord version of the [Popsauce Game](https://jklm.fun/), I will update my bot when i have time for it.
 
 
 ## Features
@@ -13,7 +13,7 @@ This bot is created in in order to make a discord version of the [Popsauce Game]
 - Message when bot is online
 
 ## RoadMap
-- [x] Minecraft Rcon acces
+- [x] Minecraft Rcon access
 - [x] Help command
 - [ ] clean code and adding comments 
   ### Popsauce
