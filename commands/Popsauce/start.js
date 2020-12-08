@@ -32,41 +32,45 @@ module.exports.run = (client, message) => {
         case 0:
           image = Math.floor(Math.random() * Math.floor(list.cquotes.length));//on choisi une image au hasard.
           console.log([list.cqrep[image]]);
-
-          const cquote = new Discord.MessageEmbed()
-          .setColor(3366179)
-          .setAuthor("Qui a dit ça ?", null, null)
-          .setDescription("```" + [list.cquotes[image]] + "```")
-          popsauce.send(cquote);
           mod.rep = list.cqrep
+          mod.q = list.cquotes
+          qembed();
           break;
         case 1:
           image = Math.floor(Math.random() * Math.floor(list.imgname.length));//on choisi une image au hasard.
           console.log([list.rep[image]]);
-          //on affiche l'image choisie dans un embed.
-          const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
-          const pic = new Discord.MessageEmbed()
-          .setColor(3366179)
-          .attachFiles(img)
-          .setImage('attachment://'+list.imgname[image]+'.png')
-          .setAuthor("D'où viens cette image", null, null)
-          popsauce.send(pic);
           mod.rep = list.rep
+          picembed()
           break;
-
         case 2:
           image = Math.floor(Math.random() * Math.floor(list.quotes.length));//on choisi une image au hasard.
           console.log([list.qrep[image]]);
-
-          const quote = new Discord.MessageEmbed()
-          .setColor(3366179)
-          .setAuthor("D'où viens cette citation", null, null)
-          .setDescription("```" + [list.quotes[image]] + "```")
-          popsauce.send(quote);
           mod.rep = list.qrep
+          mod.q = list.quotes
+          qembed();
           break;
-
+        }
+        
+              function picembed(){
+                const img = new Discord.MessageAttachment('images/'+list.imgname[image]+'.png');
+                const pic = new Discord.MessageEmbed()
+                .setColor(3366179)
+                .attachFiles(img)
+                .setImage('attachment://'+list.imgname[image]+'.png')
+                .setAuthor("D'où viens cette image", null, null)
+                popsauce.send(pic);
               }
+              
+              function qembed(){
+                const quote = new Discord.MessageEmbed()
+                .setColor(3366179)
+                .setAuthor("D'où viens cette citation", null, null)
+                .setDescription("```" + [mod.q[image]] + "```")
+                popsauce.send(quote);
+              }
+
+
+
     }else {//si il y a moins de 3 joueurs.
       joinstart.send("Pas assez de joueurs pour démarrer la partie");//affiche un message d'erreur.
     }
