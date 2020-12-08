@@ -34,6 +34,8 @@ To install my bot you need Node, and the following packages :
   npm i minecraft-server-util
   ```
 
+  Here a batch file to clone my repo and add a config.js file.
+
 ```bash
 
 git clone https://github.com/Nefers12/LeanBot.git
