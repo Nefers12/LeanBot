@@ -40,11 +40,13 @@ To install my bot you need Node, and the following packages :
 
 ```bash
 
+@ECHO OFF
+
 git clone https://github.com/Nefers12/LeanBot.git
 
 cd LeanBot/configs
 
-echo > config.js
+ECHO. > config.js
 
 ```
 
